@@ -17,6 +17,8 @@
 
 import pandas as pd
 
+pd.options.mode.copy_on_write = True    # Ver https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+
 año_actual = 2024
 canasta_basica_total = 851351
 data = {

@@ -16,3 +16,21 @@
 # 
 # Graficar en una línea continua el valor de la Fuerza Centrípeta (Fc) respecto de los radios de cada opción, de forma creciente (de
 # 2 a 22 y de 5 a 30). Incluir título, nombres de ejes y label (leyenda) con el valor de la masa y la velocidad.
+
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+masa = 300
+velocidad = 27.78
+
+radio1 = np.linspace(2, 22, 2)
+radio2 = np.linspace(5, 30, 5)
+fig, ax = plt.subplots(figsize=(7, 5), layout='constrained')
+ax.plot(radio1, masa * velocidad ** 2 / radio1, label='opción 1')
+ax.plot(radio2, masa * velocidad ** 2 / radio2, label='opción 2')
+ax.set_title('Parque de la Costa')
+ax.text(22, 80000, 'masa = {}kg\nvelocidad = {}m/s'.format(masa, velocidad))
+ax.set_xlabel('radio (m)')
+ax.set_ylabel('Fc (N)')
+ax.legend()

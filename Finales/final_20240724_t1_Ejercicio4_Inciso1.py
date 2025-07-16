@@ -18,20 +18,20 @@
 import pandas as pd
 
 año_actual = 2024
-empleados = {
+canasta_basica_total = 851351
+data = {
     'apellido': ['Perez', 'Sanchez', 'Gomez', 'Quilpe'],
     'nombre': ['Malena', 'Sergio', 'Carla', 'Jose'],
     'año_ingreso': [2008, 2015, 2023, 2022],
     'salario_al_ingreso': [700000, 450000, 300000, 600000]
 }
 
-empleados_df = pd.DataFrame(empleados)
-ingresos = empleados_df['año_ingreso']
-salarios = empleados_df['salario_al_ingreso']
-salario_actual = []
-for index in range(len(ingresos)):
-    salario_actual.append(((año_actual - ingresos[index]) * 0.5 + 1) * salarios[index])
 
-empleados_df['salario_actual'] = salario_actual
+empleados = pd.DataFrame(data)
+empleados['salario_actual'] = ((año_actual - empleados['año_ingreso']) * 0.5 + 1) * empleados['salario_al_ingreso']
+print('Empleados con salario actual:\n{}'.format(empleados))
 
-print(empleados_df)
+ingresos_cbt = empleados[empleados['salario_actual'] < canasta_basica_total]
+ingresos_cbt['salario_nuevo'] = ingresos_cbt['salario_actual'] * 4
+print('Empleados por debajo de la canasta básica total:\n{}'.format(ingresos_cbt))
+

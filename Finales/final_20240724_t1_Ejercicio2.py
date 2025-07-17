@@ -6,7 +6,7 @@
 
 def profundidad_promedio(ruta_archivo, marea):
     acum = 0.0
-    cont= 0
+    cont = 0
     try:
         archivo = open(ruta_archivo, 'r')
         profundidades = archivo.readlines()
@@ -15,12 +15,13 @@ def profundidad_promedio(ruta_archivo, marea):
             if muestra[5] == marea:
                 try:
                     acum += float(muestra[4])
-                    cont +=1
+                    cont += 1
                 except:
-                    print('Error en archivo: Fecha: {} Hora: {} Profundidad: {}.'.format(muestra[0], muestra[1], muestra[4]))
+                    print('Error en archivo: Fecha: {} Hora: {} Profundidad: {}.'.format(
+                        muestra[0], muestra[1], muestra[4]))
     except FileNotFoundError:
         print('Error en la ruta del archivo.')
     return acum / cont
 
 
-print('Profundidad promedio:',profundidad_promedio('profundidad.csv', 'alta'))
+print('Profundidad promedio:', profundidad_promedio('profundidad.csv', 'alta'))
